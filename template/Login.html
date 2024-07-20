@@ -1,0 +1,93 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+      .contact-form{
+        margin-top: 100px;
+        width: 30%;
+        margin-left: 500px;
+        border: 2px solid whitesmoke;
+        background-color: whitesmoke;
+        padding: 15px;
+      }
+      input{
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+        margin-left: 100px;
+      }
+      .row{
+        margin-left: 50px;
+      }
+      label{
+        color: black;
+        margin-left: 100px;
+      }
+      #pro-pic1{
+        margin-top: 15px;
+      }
+      button{
+        margin-top: 15px;
+        border-radius: 10px;
+        margin-left: 100px;
+        padding: 5px;
+        width: 20%;
+        background-color: darkred;
+        color: white;
+      }
+      button :hover{
+        background-color: green;
+      }
+      :hover button{
+        background-color: green;
+      }
+      h5{
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  <div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-5">Login</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'index.html' %}">Home</a></li>
+        <li class="breadcrumb-item active"><a href="{% url 'login' %}">Login</a></li>
+    </ol>
+  </div>
+  <div class="contact-form">
+    <form method="post" action="fetchlogin" id="contact-form">
+      {% csrf_token %}
+      <div class="clearfix">
+
+        <!-- Form Group -->
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label>Email *</label>
+          <input type="email" name="uemail" placeholder="Email *" required>
+        </div>
+
+                      <!-- Form Group -->
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <label>Password *</label>
+          <input type="password" name="upassword" placeholder="Choose Password *" required>
+        </div>
+
+        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+          <button type="submit" class="theme-btn btn-style-one"><span class="txt">Login</span></button>
+        </div>
+      </div>
+    </form>
+    <h5>Forgot password?<a href="{% url 'forgot' %}"> Reset it</a></h5>
+  </div>
+
+</div>
+</body>
+</html>
+{% endblock %}
